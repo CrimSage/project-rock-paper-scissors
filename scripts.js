@@ -17,9 +17,10 @@ function playRound(playerSelection, computerSelection) {
         return 1;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
         return 1;
-    } else if (playerSelection === "rock", "paper", "scissors") {
-    } else {
+    } else if (playerSelection === computerSelection) {
         return 0;
+    } else {
+        return -1;
     }
 }
 
@@ -46,9 +47,12 @@ function game() {
             compScore++;
             console.log("You lose! Paper beats rock.");
             console.log("player score = "+ playerScore +"\ncompScore = " + compScore);
-        } else {
+        } else if (playRound(playerSelection, computerSelection) === 0) {
             console.log("It's a draw, try again");
             console.log("player score = "+ playerScore +"\ncompScore = " + compScore);
+        } else if (playRound(playerSelection, computerSelection) === -1) {
+            console.log("Invalid input!");
+            i--;
         }
     }
     if (playerScore > compScore) {
