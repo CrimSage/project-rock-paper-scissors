@@ -6,21 +6,57 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "paper") {
-        return "You lose! Paper beats rock.";
+        return 4;
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "You lose! scissors beats rock.";
+        return 3;
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "You lose! rock beats scissors.";
+        return 2;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You win!";
+        return 1;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win!";
+        return 1;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win!";
+        return 1;
+    } else if (playerSelection === "rock", "paper", "scissors") {
     } else {
-        return "It's a draw.";
+        return 0;
     }
 }
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    let playerScore = 0;
+    let compScore = 0;
+    for (let i = 0; i < 5; i++) {
+        const playerInput = prompt("Enter rock, paper, or scissors!");
+        const playerSelection = playerInput.toLowerCase();
+        computerSelection = computerPlay();
+         if (playRound(playerSelection, computerSelection) === 1) {
+            playerScore++;
+            console.log("You won this round.");
+            console.log("player score = "+ playerScore +"\ncompScore = " + compScore);
+        } else if (playRound(playerSelection, computerSelection) === 2) {
+            compScore++;
+            console.log("You lose! rock beats scissors.");
+            console.log("player score = "+ playerScore +"\ncompScore = " + compScore);
+        } else if (playRound(playerSelection, computerSelection) === 3) {
+            compScore++;
+            console.log("You lose! scissors beats paper.");
+            console.log("player score = "+ playerScore +"\ncompScore = " + compScore);
+        } else if (playRound(playerSelection, computerSelection) === 4) {
+            compScore++;
+            console.log("You lose! Paper beats rock.");
+            console.log("player score = "+ playerScore +"\ncompScore = " + compScore);
+        } else {
+            console.log("It's a draw, try again");
+            console.log("player score = "+ playerScore +"\ncompScore = " + compScore);
+        }
+    }
+    if (playerScore > compScore) {
+        console.log("You win the game!");
+    } else if (playerScore === compScore) {
+        console.log("It's a tie.");
+    } else {
+        console.log("You lose, lol.")
+    }
+}
+game()
